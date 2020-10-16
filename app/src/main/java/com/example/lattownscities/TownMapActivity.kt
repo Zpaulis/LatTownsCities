@@ -11,6 +11,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_town_map.*
 import java.lang.reflect.Array.set
 
 const val MAPTAG = "***** MAP *****"
@@ -47,8 +48,8 @@ class TownMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(coordLatLng).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordLatLng))
+        val centrs = LatLng(56.85,24.5)
+        mMap.addMarker(MarkerOptions().position(coordLatLng).title("Marker in the Town"))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordLatLng, 8F))
     }
 }
