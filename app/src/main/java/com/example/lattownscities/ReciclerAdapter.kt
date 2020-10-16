@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_town_short.view.*
 
-class TownAdapter: RecyclerView.Adapter<TownAdapter.TownViewHolder>() {
 
-//private var townData
+class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adapter<TownAdapter.TownViewHolder>() {
+
 override fun getItemCount(): Int = townData.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TownViewHolder {
@@ -18,14 +18,21 @@ override fun getItemCount(): Int = townData.size
     }
 
     override fun onBindViewHolder(holder: TownViewHolder, position: Int) {
-        holder.bind(townData[position], position)
+        holder.bind(townData[position])
+        holder.itemView.open_map_button.setOnClickListener{
+            val coord = townData[position].location.toDoubleArray()
+            listener.showMap(coord)
+        }
+
     }
 
     inner class TownViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(town: TownData, position: Int) {
+        fun bind(town: TownData) {
             itemView.town_name.text = town.name
             itemView.coat_of_arms.loadImg(town.coat)
         }
     }
+
+
 
 }

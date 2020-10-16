@@ -23,9 +23,7 @@ fun loadTowns(myCallback: MainActivity.MyCallback) {
                 Log.d(TAG, "$town")
             }
             Log.d(TAG, townData.size.toString())
-
             myCallback.onCallback(townData)
-
         }
 
         .addOnFailureListener { exception ->
