@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val MAINTAG = "MAIN ACTIVITY"
 var townData = mutableListOf<TownData>()
+private lateinit var layoutManager : StaggeredGridLayoutManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +27,12 @@ class MainActivity : AppCompatActivity() {
         })
     }
     private fun setupRecyclerView() {
+        layoutManager = StaggeredGridLayoutManager(
+            resources.getInteger(R.integer.span_count), StaggeredGridLayoutManager.VERTICAL
+        )
+
         mainItems.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = layoutManager //LinearLayoutManager(context)
             adapter = TownAdapter()
             setHasFixedSize(true)
         }

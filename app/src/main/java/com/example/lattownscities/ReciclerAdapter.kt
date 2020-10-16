@@ -22,9 +22,9 @@ override fun getItemCount(): Int = townData.size
     }
 
     inner class TownViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(player: TownData, position: Int) {
-            itemView.town_name.text = townData[position].name
-            itemView.coat_of_arms.loadImg(townData[position].coat)
+        fun bind(town: TownData, position: Int) {
+            itemView.town_name.text = town.name
+            itemView.coat_of_arms.loadImg(town.coat)
         }
     }
 
