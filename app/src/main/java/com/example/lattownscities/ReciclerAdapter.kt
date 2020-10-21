@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lattownscities.MainActivity.Companion.town
 import kotlinx.android.synthetic.main.card_town_short.view.*
 
 
@@ -22,6 +23,10 @@ override fun getItemCount(): Int = townData.size
         holder.itemView.open_map_button.setOnClickListener{
             val coord = townData[position].location.toDoubleArray()
             listener.showMap(coord)
+        }
+        holder.itemView.coat_of_arms.setOnClickListener {
+            town = townData[position]
+            listener.showDetails()
         }
 
     }

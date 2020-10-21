@@ -4,5 +4,8 @@
     <string name="todo">TODO</string>
     <string name="countryname">Countryname</string>
     <string name="title_activity_town_map">Map</string>
+    <string name="town">Town</string>
+    <string name="sqrkm">%s sqrkm</string>
+    <string name="region">%s  *  LV %s</string>
 
 </resources>

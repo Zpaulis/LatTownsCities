@@ -46,10 +46,13 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         (super.onActivityResult(requestCode, resultCode, data))
         if (requestCode == REQUEST_CODE_DETAILS && resultCode == RESULT_OK && data != null){
-            //DO SOMETHING
+            TODO("Not yet implemented")
         }
     }
 
+    override fun showDetails() {
+        startActivity(Intent(this, TownDetailActivity::class.java))
+    }
     interface MyCallback {
         fun onCallback(value: MutableList<TownData>)
     }
@@ -57,10 +60,11 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
     companion object{
         const val EXTRA = "ID"
         const val REQUEST_CODE_DETAILS = 1111
-
+        var town : TownData? = null
     }
 
 }
 interface AdapterClickListener {
     fun showMap(coord: DoubleArray)
+    fun showDetails()
 }
