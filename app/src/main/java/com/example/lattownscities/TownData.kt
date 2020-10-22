@@ -9,5 +9,6 @@ data class TownData (
     val population :Int = 0,
     val region :String = "",
     val url :String = "",
+    val wiki :String = "",
     val zip :String = ""
 )

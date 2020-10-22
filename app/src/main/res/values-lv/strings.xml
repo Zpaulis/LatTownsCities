@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pilsētas</string>
+    <string name="search">Atrodi pilsētu</string>
+    <string name="todo">todo</string>
+    <string name="countryname">Pilsēta</string>
+    <string name="title_activity_town_map">Karte</string>
+    <string name="town">Pilsēta</string>
+    <string name="sqrkm">% kv.km.</string>
+    <string name="region">%s    *    LV-%s</string>
+</resources>

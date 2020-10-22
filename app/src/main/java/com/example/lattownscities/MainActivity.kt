@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +17,10 @@ private lateinit var adapter : TownAdapter
 
 class MainActivity : AppCompatActivity(), AdapterClickListener {
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu_settings, menu)
+        return true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +32,6 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
                 setupRecyclerView()
             }
         })
-
     }
     private fun setupRecyclerView() {
         layoutManager = StaggeredGridLayoutManager(
@@ -61,6 +67,25 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
         const val EXTRA = "ID"
         const val REQUEST_CODE_DETAILS = 1111
         var town : TownData? = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.getItemId()){
+            R.id.order_name -> {
+                townData.sortByDescending { it.name }
+                true }
+            R.id.order_area -> {
+                townData.sortByDescending { it.area }
+//                adapter.notifyDataSetChanged()
+                true }
+            R.id.order_population -> {
+                townData.sortByDescending { it.population }
+                true }
+            R.id.order_own -> {
+                townData.sortBy { it.own }
+                true }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

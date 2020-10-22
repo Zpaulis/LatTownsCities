@@ -11,8 +11,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_town_map.*
-import java.lang.reflect.Array.set
 
 const val MAPTAG = "***** MAP *****"
 class TownMapActivity : AppCompatActivity(), OnMapReadyCallback {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/order"
+        android:icon="@drawable/ic_baseline_sort_24"
+        android:title="@string/order"
+        app:showAsAction="ifRoom" >
+        <menu>
+        <item
+            android:id="@+id/order_name"
+            android:title="@string/sort_by_name"
+            app:showAsAction="ifRoom|withText" />
+
+        <item
+            android:id="@+id/order_own"
+            android:title="@string/sort_by_year"
+            app:showAsAction="ifRoom|withText" />
+
+        <item
+            android:id="@+id/order_area"
+            android:title="@string/sort_by_area"
+            app:showAsAction="ifRoom|withText" />
+
+        <item
+            android:id="@+id/order_population"
+            android:title="@string/sort_by_population"
+            app:showAsAction="ifRoom|withText" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/query"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/query"
+        app:showAsAction="ifRoom" >
+        <menu>
+            <item
+                android:id="@+id/query_name"
+                android:title="@string/search_by_name"
+                app:showAsAction="ifRoom|withText" />
+
+            <item
+                android:id="@+id/query_own"
+                android:title="@string/search_by_year"
+                app:showAsAction="ifRoom|withText" />
+
+            <item
+                android:id="@+id/query_area"
+                android:title="@string/search_by_area"
+                app:showAsAction="ifRoom|withText" />
+
+            <item
+                android:id="@+id/query_population"
+                android:title="@string/search_by_population"
+                app:showAsAction="ifRoom|withText" />
+
+    </menu>
+</item>
+
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always" >
+        <menu>
+            <item
+                android:id="@+id/language"
+                android:title="@string/language"
+                app:showAsAction="ifRoom|withText" />
+
+
+        </menu>
+    </item>
+</menu>

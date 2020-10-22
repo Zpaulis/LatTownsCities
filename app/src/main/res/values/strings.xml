@@ -1,11 +1,23 @@
 <resources>
-    <string name="app_name">LatTownsCities</string>
+    <string name="app_name">LatTowns</string>
     <string name="search">Search Your Town or City</string>
     <string name="todo">TODO</string>
-    <string name="countryname">Countryname</string>
+    <string name="countryname">Cityname</string>
     <string name="title_activity_town_map">Map</string>
     <string name="town">Town</string>
     <string name="sqrkm">%s sqrkm</string>
     <string name="region">%s  *  LV %s</string>
+    <string name="query">Query</string>
+    <string name="settings">Settings</string>
+    <string name="order">Order</string>
+    <string name="sort_by_name">sort by NAME</string>
+    <string name="sort_by_year">sort by YEAR</string>
+    <string name="sort_by_area">sort by AREA</string>
+    <string name="sort_by_population">sort by POPULATION</string>
+    <string name="search_by_name">search by NAME</string>
+    <string name="search_by_year">search by YEAR</string>
+    <string name="search_by_area">search by AREA</string>
+    <string name="search_by_population">search by POPULATION</string>
+    <string name="language">Language</string>
 
 </resources>

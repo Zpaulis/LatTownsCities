@@ -20,6 +20,7 @@ override fun getItemCount(): Int = townData.size
 
     override fun onBindViewHolder(holder: TownViewHolder, position: Int) {
         holder.bind(townData[position])
+
         holder.itemView.open_map_button.setOnClickListener{
             val coord = townData[position].location.toDoubleArray()
             listener.showMap(coord)
@@ -28,7 +29,6 @@ override fun getItemCount(): Int = townData.size
             town = townData[position]
             listener.showDetails()
         }
-
     }
 
     inner class TownViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +37,4 @@ override fun getItemCount(): Int = townData.size
             itemView.coat_of_arms.loadImg(town.coat)
         }
     }
-
-
-
 }
