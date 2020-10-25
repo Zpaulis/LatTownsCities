@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val MAINTAG = "MAIN ACTIVITY"
 var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
-private lateinit var adapter : TownAdapter
+private lateinit var madapter : TownAdapter
 
 class MainActivity : AppCompatActivity(), AdapterClickListener {
 
@@ -39,7 +38,8 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
         )
         mainItems.apply {
             layoutManager = layoutManager
-            adapter = TownAdapter(this@MainActivity)
+            madapter = TownAdapter(this@MainActivity)
+            adapter = madapter
             setHasFixedSize(true)
         }
     }
@@ -72,22 +72,24 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.getItemId()){
             R.id.order_name -> {
-                townData.sortByDescending { it.name }
+                townData.sortBy { it.name }
+                madapter.notifyDataSetChanged()
                 true }
             R.id.order_area -> {
                 townData.sortByDescending { it.area }
-//                adapter.notifyDataSetChanged()
+                madapter.notifyDataSetChanged()
                 true }
             R.id.order_population -> {
                 townData.sortByDescending { it.population }
+                madapter.notifyDataSetChanged()
                 true }
             R.id.order_own -> {
                 townData.sortBy { it.own }
+                madapter.notifyDataSetChanged()
                 true }
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
 interface AdapterClickListener {
     fun showMap(coord: DoubleArray)
