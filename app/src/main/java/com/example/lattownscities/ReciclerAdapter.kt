@@ -35,6 +35,20 @@ override fun getItemCount(): Int = townData.size
         fun bind(town: TownData) {
             itemView.town_name.text = town.name
             itemView.coat_of_arms.loadImg(town.coat)
+            return when (helperText)
+            {"name" -> {
+                    itemView.sorting_textView.text = ""
+                }
+            "population" -> {
+                itemView.sorting_textView.text = town.population.toString()
+            }
+            "area" -> {
+                itemView.sorting_textView.text = town.area.toString()
+            }
+            "own" -> {
+                itemView.sorting_textView.text = town.own.toString()
+            }
+            else -> return}
         }
     }
 }

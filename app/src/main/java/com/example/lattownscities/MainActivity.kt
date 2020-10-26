@@ -15,6 +15,7 @@ var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
 lateinit var madapter : TownAdapter
 var sortOrder = true
+var helperText = ""
 
 class MainActivity : AppCompatActivity(), AdapterClickListener {
 
