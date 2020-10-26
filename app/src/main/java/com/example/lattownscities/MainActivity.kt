@@ -6,13 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val MAINTAG = "MAIN ACTIVITY"
 var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
-private lateinit var madapter : TownAdapter
+lateinit var madapter : TownAdapter
+var sortOrder = true
 
 class MainActivity : AppCompatActivity(), AdapterClickListener {
 
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             }
         })
     }
+
     private fun setupRecyclerView() {
         layoutManager = StaggeredGridLayoutManager(
             resources.getInteger(R.integer.span_count), StaggeredGridLayoutManager.VERTICAL
@@ -43,52 +46,55 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             setHasFixedSize(true)
         }
     }
+// Swich to Show Town in Map Activity
     override fun showMap(coord: DoubleArray){
         val intent = Intent(this, TownMapActivity::class.java)
             .putExtra(EXTRA, coord)
         startActivityForResult(intent, REQUEST_CODE_DETAILS)
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        (super.onActivityResult(requestCode, resultCode, data))
-        if (requestCode == REQUEST_CODE_DETAILS && resultCode == RESULT_OK && data != null){
-            TODO("Not yet implemented")
-        }
-    }
-
+// Swich to Detail View Activity
     override fun showDetails() {
         startActivity(Intent(this, TownDetailActivity::class.java))
     }
     interface MyCallback {
         fun onCallback(value: MutableList<TownData>)
     }
+// Return from Detail View Activity
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        (super.onActivityResult(requestCode, resultCode, data))
+        if (requestCode == REQUEST_CODE_DETAILS && resultCode == RESULT_OK && data != null){
+            TODO("Not yet implemented")
+        }
+    }
+// Action menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.getItemId()) {
+            R.id.app_bar_switch -> {
+                item.isChecked = !item.isChecked
+                sortOrder = item.isChecked
+                Toast.makeText(this, "$sortOrder", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.order_name -> {
+                sorter (sortOrder, "name")
+                true }
+            R.id.order_area -> {
+                sorter (sortOrder, "area")
+                true }
+            R.id.order_population -> {
+                sorter (sortOrder, "population")
+                true }
+            R.id.order_own -> {
+                sorter (sortOrder, "own")
+                true }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     companion object{
         const val EXTRA = "ID"
         const val REQUEST_CODE_DETAILS = 1111
         var town : TownData? = null
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.getItemId()){
-            R.id.order_name -> {
-                townData.sortBy { it.name }
-                madapter.notifyDataSetChanged()
-                true }
-            R.id.order_area -> {
-                townData.sortByDescending { it.area }
-                madapter.notifyDataSetChanged()
-                true }
-            R.id.order_population -> {
-                townData.sortByDescending { it.population }
-                madapter.notifyDataSetChanged()
-                true }
-            R.id.order_own -> {
-                townData.sortBy { it.own }
-                madapter.notifyDataSetChanged()
-                true }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 }
 interface AdapterClickListener {

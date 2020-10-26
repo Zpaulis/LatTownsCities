@@ -19,5 +19,6 @@
     <string name="search_by_area">search by AREA</string>
     <string name="search_by_population">search by POPULATION</string>
     <string name="language">Language</string>
+    <string name="up_down_order">Up-Down</string>
 
 </resources>

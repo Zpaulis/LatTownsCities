@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/app_bar_switch"
+        android:checkable="true"
+        android:title="@string/up_down_order"
+        android:icon="@drawable/ic_updown_selector"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/order"
         android:icon="@drawable/ic_baseline_sort_24"
         android:title="@string/order"
@@ -38,23 +44,31 @@
         <menu>
             <item
                 android:id="@+id/query_name"
+                android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_name"
-                app:showAsAction="ifRoom|withText" />
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="ifRoom|collapseActionView" />
 
             <item
                 android:id="@+id/query_own"
+                android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_year"
-                app:showAsAction="ifRoom|withText" />
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="ifRoom|collapseActionView" />
 
             <item
                 android:id="@+id/query_area"
+                android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_area"
-                app:showAsAction="ifRoom|withText" />
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="ifRoom|collapseActionView" />
 
             <item
                 android:id="@+id/query_population"
+                android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_population"
-                app:showAsAction="ifRoom|withText" />
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="ifRoom|collapseActionView" />
 
     </menu>
 </item>
