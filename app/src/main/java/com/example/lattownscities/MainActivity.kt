@@ -72,9 +72,10 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             R.id.app_bar_switch -> {
                 item.isChecked = !item.isChecked
                 sortOrder = item.isChecked
-                Toast.makeText(this, "$sortOrder", Toast.LENGTH_SHORT).show()
-                true
-            }
+                item.setChecked(sortOrder)
+                if (sortOrder) item.setIcon(R.drawable.ic_baseline_arrow_downward_24)
+                else item.setIcon(R.drawable.ic_baseline_arrow_upward_24)
+                true }
             R.id.order_name -> {
                 sorter (sortOrder, "name")
                 true }
