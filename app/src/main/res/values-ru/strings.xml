@@ -4,4 +4,24 @@
     <string name="search">Искать город</string>
     <string name="region">%s    *    LV-%s</string>
     <string name="sqrkm">% кв. км</string>
+    <string name="todo">todo</string>
+    <string name="countryname">Город</string>
+    <string name="title_activity_town_map">Карта</string>
+    <string name="town">Город</string>
+    <string name="population">%s жителей</string>
+    <string name="own">Город с %s</string>
+    <string name="query">Искать</string>
+    <string name="settings">Установки</string>
+    <string name="order">Порядок</string>
+    <string name="sort_by_name">по алфавиту</string>
+    <string name="sort_by_year">по годам</string>
+    <string name="sort_by_area">по площади</string>
+    <string name="sort_by_population">по населению</string>
+    <string name="search_by_name">по названию</string>
+    <string name="search_by_year">по годам</string>
+    <string name="search_by_area">по площади</string>
+    <string name="search_by_population">по населению</string>
+    <string name="language">Язык</string>
+    <string name="up_down_order">порядок</string>
+    <string name="columns">колонны</string>
 </resources>

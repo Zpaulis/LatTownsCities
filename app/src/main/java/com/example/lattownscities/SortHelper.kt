@@ -5,45 +5,45 @@ fun sorter(sortOrder : Boolean, parameter : String) {
     return when (parameter) {
         "name" -> {
         if (sortOrder) {
-            townData.sortByDescending { it.name }
-            helperText = "name"
+            townData.sortBy { it.name }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         } else {
-            townData.sortBy { it.name }
-            helperText = "name"
+            townData.sortByDescending { it.name }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         }
     }
         "area" -> {
         if (sortOrder) {
-            townData.sortByDescending { it.area }
-            helperText = "area"
+            townData.sortBy { it.area }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         } else {
-            townData.sortBy { it.area }
-            helperText = "area"
+            townData.sortByDescending { it.area }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         }
     }
         "population" -> {
         if (sortOrder) {
-            townData.sortByDescending { it.population }
-            helperText = "population"
+            townData.sortBy { it.population }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         } else {
-            townData.sortBy { it.population }
-            helperText = "population"
+            townData.sortByDescending { it.population }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         }
     }
         "own" -> {
         if (sortOrder) {
-            townData.sortByDescending { it.own }
-            helperText = "own"
+            townData.sortBy { it.own }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         } else {
-            townData.sortBy { it.own }
-            helperText = "own"
+            townData.sortByDescending { it.own }
+            helperText = parameter
             madapter.notifyDataSetChanged()
         }
     }

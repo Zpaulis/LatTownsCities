@@ -5,7 +5,9 @@
     <string name="countryname">Cityname</string>
     <string name="title_activity_town_map">Map</string>
     <string name="town">Town</string>
-    <string name="sqrkm">%s sqrkm</string>
+    <string name="sqrkm">%s km<sup><small><small>2</small></small></sup></string>
+    <string name="population">Population\n %s</string>
+    <string name="own">Town from\n %s</string>
     <string name="region">%s  *  LV %s</string>
     <string name="query">Query</string>
     <string name="settings">Settings</string>
@@ -20,5 +22,6 @@
     <string name="search_by_population">search by POPULATION</string>
     <string name="language">Language</string>
     <string name="up_down_order">Up-Down</string>
+    <string name="columns">Columns</string>
 
 </resources>

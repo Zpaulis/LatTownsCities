@@ -1,5 +1,6 @@
 package com.example.lattownscities
 
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ override fun getItemCount(): Int = townData.size
 
     inner class TownViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(town: TownData) {
+            val context = itemView.context
             itemView.town_name.text = town.name
             itemView.coat_of_arms.loadImg(town.coat)
             return when (helperText)
@@ -40,13 +42,13 @@ override fun getItemCount(): Int = townData.size
                     itemView.sorting_textView.text = ""
                 }
             "population" -> {
-                itemView.sorting_textView.text = town.population.toString()
+                itemView.sorting_textView.text = context.getString(R.string.population,town.population.toString())
             }
             "area" -> {
-                itemView.sorting_textView.text = town.area.toString()
+                itemView.sorting_textView.text = context.getString(R.string.sqrkm,town.area.toString())
             }
             "own" -> {
-                itemView.sorting_textView.text = town.own.toString()
+                itemView.sorting_textView.text = context.getString(R.string.own,town.own.toString())
             }
             else -> return}
         }

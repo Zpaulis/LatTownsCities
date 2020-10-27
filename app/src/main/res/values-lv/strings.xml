@@ -8,4 +8,20 @@
     <string name="town">Pilsēta</string>
     <string name="sqrkm">% kv.km.</string>
     <string name="region">%s    *    LV-%s</string>
+    <string name="population">%s iedzīvotāju</string>
+    <string name="own">Pilsēta no %s</string>
+    <string name="query">Meklēt</string>
+    <string name="settings">Uzstādījumi</string>
+    <string name="order">Kārtot</string>
+    <string name="sort_by_name">Kārtot pēc NOSAUKUMA</string>
+    <string name="sort_by_year">Kārtot pēc GADA</string>
+    <string name="sort_by_area">Kārtot pēc PLATĪBAS</string>
+    <string name="sort_by_population">pēc IEDZĪVOTĀJU skaita</string>
+    <string name="search_by_name">meklēt pēc NOSAUKUMA</string>
+    <string name="search_by_year">meklēt pēc GADA</string>
+    <string name="search_by_area">meklēt pēc PLATĪBAS</string>
+    <string name="search_by_population">meklēt pēc IEDZĪVOTĀJU skaita</string>
+    <string name="language">Valoda</string>
+    <string name="up_down_order">Aug-Dilst</string>
+    <string name="columns">Kolonas</string>
 </resources>
