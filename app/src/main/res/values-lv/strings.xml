@@ -6,10 +6,10 @@
     <string name="countryname">Pilsēta</string>
     <string name="title_activity_town_map">Karte</string>
     <string name="town">Pilsēta</string>
-    <string name="sqrkm">% kv.km.</string>
+    <string name="sqrkm">%s kv.km.</string>
     <string name="region">%s    *    LV-%s</string>
-    <string name="population">%s iedzīvotāju</string>
-    <string name="own">Pilsēta no %s</string>
+    <string name="population">%s \niedzīvotāju</string>
+    <string name="own">Pilsēta no\n %s</string>
     <string name="query">Meklēt</string>
     <string name="settings">Uzstādījumi</string>
     <string name="order">Kārtot</string>

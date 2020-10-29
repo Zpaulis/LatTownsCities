@@ -4,14 +4,47 @@ import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lattownscities.MainActivity.Companion.town
 import kotlinx.android.synthetic.main.card_town_short.view.*
+import java.util.*
 
 
-class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adapter<TownAdapter.TownViewHolder>() {
+class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adapter<TownAdapter.TownViewHolder>(), Filterable {
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    townFilterList = townData
+                } else {
+                    val resultList = mutableListOf<TownData>()
+                    for (row in townData){
+                        if ((row.name.toLowerCase(Locale.ROOT)).contains(charSearch.toLowerCase(Locale.ROOT)))
+                        resultList.add(row)
+                    }
+                    townFilterList = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = townFilterList
+                return filterResults
+            }
 
-override fun getItemCount(): Int = townData.size
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                townFilterList = results?.values as MutableList<TownData>
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+    var townFilterList = mutableListOf<TownData>()
+    init {
+        townFilterList = townData
+    }
+override fun getItemCount(): Int = townFilterList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TownViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,14 +53,15 @@ override fun getItemCount(): Int = townData.size
     }
 
     override fun onBindViewHolder(holder: TownViewHolder, position: Int) {
-        holder.bind(townData[position])
-
+        holder.bind(townFilterList[position])
+        // Listener to switch to MAP view
         holder.itemView.open_map_button.setOnClickListener{
-            val coord = townData[position].location.toDoubleArray()
+            val coord = townFilterList[position].location.toDoubleArray()
             listener.showMap(coord)
         }
+        // Listener to switch to DETAIL view
         holder.itemView.coat_of_arms.setOnClickListener {
-            town = townData[position]
+            town = townFilterList[position]
             listener.showDetails()
         }
     }

@@ -1,6 +1,5 @@
 package com.example.lattownscities
 
-
 fun sorter(sortOrder : Boolean, parameter : String) {
     return when (parameter) {
         "name" -> {

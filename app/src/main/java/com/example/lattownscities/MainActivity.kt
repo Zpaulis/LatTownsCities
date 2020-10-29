@@ -1,5 +1,7 @@
 package com.example.lattownscities
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,10 +9,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val MAINTAG = "MAIN ACTIVITY"
+//const val MAINTAG = "MAIN ACTIVITY"
 var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
 lateinit var madapter : TownAdapter
@@ -21,6 +25,25 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu_settings, menu)
+        val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu?.findItem(R.id.query)
+        val searchView = searchItem?.actionView as SearchView
+
+        searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+//                searchView.setQuery("", false)
+                searchItem.collapseActionView()
+                Toast.makeText(this@MainActivity, "Meklē $query", Toast.LENGTH_SHORT).show()
+                return false
+            }
+            override fun onQueryTextChange(newText:String?): Boolean {
+                madapter.filter.filter(newText)
+                return false
+            }
+        })
         return true
     }
 
@@ -30,7 +53,7 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
 //        setSupportActionBar(toolbar)
         loadTowns(object : MyCallback {
             override fun onCallback(value: MutableList<TownData>) {
-                Log.d(MAINTAG, townData.size.toString())
+//                Log.d(MAINTAG, townData.size.toString())
                 setupRecyclerView()
             }
         })
@@ -44,16 +67,17 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             layoutManager = layoutManager
             madapter = TownAdapter(this@MainActivity)
             adapter = madapter
+//            adapter.filter.filter(newText)
             setHasFixedSize(true)
         }
     }
-// Swich to Show Town in Map Activity
+// Switch to Show Town in Map Activity
     override fun showMap(coord: DoubleArray){
         val intent = Intent(this, TownMapActivity::class.java)
             .putExtra(EXTRA, coord)
         startActivityForResult(intent, REQUEST_CODE_DETAILS)
     }
-// Swich to Detail View Activity
+// Switch to Detail View Activity
     override fun showDetails() {
         startActivity(Intent(this, TownDetailActivity::class.java))
     }

@@ -7,32 +7,37 @@
         android:id="@+id/query"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/query"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom" >
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/query_selection"
+        android:icon="@drawable/ic_baseline_filter_alt_24"
+        android:title="@string/query"
+        app:showAsAction="always" >
         <menu>
             <item
                 android:id="@+id/query_name"
                 android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_name"
-                app:showAsAction="ifRoom|collapseActionView" />
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/query_own"
                 android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_year"
-                app:showAsAction="ifRoom|collapseActionView" />
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/query_area"
                 android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_area"
-                app:showAsAction="ifRoom|collapseActionView" />
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/query_population"
                 android:icon="@drawable/ic_search_black_24dp"
                 android:title="@string/search_by_population"
-                app:showAsAction="ifRoom|collapseActionView" />
+                app:showAsAction="ifRoom" />
 
         </menu>
     </item>
@@ -46,27 +51,27 @@
         android:id="@+id/order"
         android:icon="@drawable/ic_baseline_sort_24"
         android:title="@string/order"
-        app:showAsAction="ifRoom" >
+        app:showAsAction="always" >
         <menu>
         <item
             android:id="@+id/order_name"
             android:title="@string/sort_by_name"
-            app:showAsAction="ifRoom|withText" />
+            app:showAsAction="ifRoom" />
 
         <item
             android:id="@+id/order_own"
             android:title="@string/sort_by_year"
-            app:showAsAction="ifRoom|withText" />
+            app:showAsAction="ifRoom" />
 
         <item
             android:id="@+id/order_area"
             android:title="@string/sort_by_area"
-            app:showAsAction="ifRoom|withText" />
+            app:showAsAction="ifRoom" />
 
         <item
             android:id="@+id/order_population"
             android:title="@string/sort_by_population"
-            app:showAsAction="ifRoom|withText" />
+            app:showAsAction="ifRoom" />
         </menu>
     </item>
 
@@ -74,16 +79,16 @@
         android:id="@+id/settings"
         android:title="@string/settings"
         android:icon="@drawable/ic_baseline_settings_24"
-        app:showAsAction="always" >
+        app:showAsAction="never" >
         <menu>
             <item
                 android:id="@+id/language"
                 android:title="@string/language"
-                app:showAsAction="ifRoom|withText" />
+                app:showAsAction="never" />
             <item
                 android:id="@+id/columns"
                 android:title="@string/columns"
-                app:showAsAction="ifRoom|withText" />
+                app:showAsAction="never" />
 
         </menu>
     </item>

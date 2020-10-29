@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<?comment
     <EditText
         android:id="@+id/main_city_search_view"
         android:layout_width="0dp"
@@ -34,7 +34,7 @@
         app:srcCompat="@android:drawable/ic_menu_search"
         android:focusable="true"
         android:contentDescription="@string/todo" />
-
+    ?>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainItems"
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_city_search_view"
+        app:layout_constraintTop_toTopOf="parent"
         app:spanCount="@integer/span_count"
         tools:listitem="@layout/card_town_short" />
 
