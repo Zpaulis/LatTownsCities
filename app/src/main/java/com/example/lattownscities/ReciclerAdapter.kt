@@ -20,11 +20,17 @@ class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adap
                 if (charSearch.isEmpty()) {
                     townFilterList = townData
                 } else {
-                    val resultList = mutableListOf<TownData>()
-                    for (row in townData){
+                    var resultList = mutableListOf<TownData>()
+                    when (queryTarget) {
+                    "name" -> {for (row in townData){
                         if ((row.name.toLowerCase(Locale.ROOT)).contains(charSearch.toLowerCase(Locale.ROOT)))
                         resultList.add(row)
                     }
+                        }
+                    "own" -> {
+                        resultList = townData.filter { it.own == charSearch.toInt() }.toMutableList()
+                        }
+                            }
                     townFilterList = resultList
                 }
                 val filterResults = FilterResults()

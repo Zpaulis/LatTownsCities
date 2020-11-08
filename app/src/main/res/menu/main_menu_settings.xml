@@ -39,6 +39,12 @@
                 android:title="@string/search_by_population"
                 app:showAsAction="ifRoom" />
 
+            <item
+                android:id="@+id/query_coa"
+                android:icon="@drawable/ic_search_black_24dp"
+                android:title="@string/search_by_coa"
+                app:showAsAction="ifRoom" />
+
         </menu>
     </item>
     <item

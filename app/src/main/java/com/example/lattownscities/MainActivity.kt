@@ -19,6 +19,8 @@ var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
 lateinit var madapter : TownAdapter
 var sortOrder = true
+var sortParameter = "name"
+var queryTarget = "name"
 var helperText = ""
 
 class MainActivity : AppCompatActivity(), AdapterClickListener {
@@ -94,24 +96,46 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
 // Action menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.getItemId()) {
+            // Order menu
             R.id.app_bar_switch -> {
                 item.isChecked = !item.isChecked
                 sortOrder = item.isChecked
                 item.setChecked(sortOrder)
+                sorter (sortOrder, sortParameter)
                 if (sortOrder) item.setIcon(R.drawable.ic_baseline_arrow_downward_24)
                 else item.setIcon(R.drawable.ic_baseline_arrow_upward_24)
                 true }
             R.id.order_name -> {
-                sorter (sortOrder, "name")
+                sortParameter = "name"
+                sorter (sortOrder, sortParameter)
                 true }
             R.id.order_area -> {
-                sorter (sortOrder, "area")
+                sortParameter = "area"
+                sorter (sortOrder, sortParameter)
                 true }
             R.id.order_population -> {
-                sorter (sortOrder, "population")
+                sortParameter = "population"
+                sorter (sortOrder, sortParameter)
                 true }
             R.id.order_own -> {
-                sorter (sortOrder, "own")
+                sortParameter = "own"
+                sorter (sortOrder, sortParameter)
+                true }
+            // Query menu
+            R.id.query_name -> {
+                queryTarget = "name"
+                true }
+            R.id.query_own -> {
+                queryTarget = "own"
+                true }
+            R.id.query_area -> {
+                queryTarget = "area"
+                true }
+            R.id.query_population -> {
+                queryTarget = "population"
+                true }
+            R.id.query_coa -> {
+                queryTarget = "coa"
                 true }
             else -> super.onOptionsItemSelected(item)
         }

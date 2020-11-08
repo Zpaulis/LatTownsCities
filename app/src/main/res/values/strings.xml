@@ -23,5 +23,6 @@
     <string name="language">Language</string>
     <string name="up_down_order">Up-Down</string>
     <string name="columns">Columns</string>
+    <string name="search_by_coa">search_by_COA</string>
 
 </resources>
