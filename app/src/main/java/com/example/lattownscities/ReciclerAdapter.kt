@@ -28,7 +28,7 @@ class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adap
                     }
                         }
                     "own" -> {
-                        resultList = townData.filter { it.own == charSearch.toInt() }.toMutableList()
+                        resultList = townData.filter { yearSearcher(charSearch, it.own) }.toMutableList()
                         }
                             }
                     townFilterList = resultList
