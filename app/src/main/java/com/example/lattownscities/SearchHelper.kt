@@ -45,3 +45,26 @@ fun yearSearcher (string: String, own : Int) : Boolean {
     }
     return own in yearMin..yearMax
 }
+
+fun numSearcher(searchString : String, num : Int) : Boolean {
+var numMin = 0
+var numMax = 9999999
+    val numbers = Regex("[0-9]+").findAll(searchString)
+        .map(MatchResult::value)
+        .toList()
+    when (numbers.size){
+        1 -> if (searchString[0].toString().equals("<")) {
+            numMax = numbers[0].toInt()
+        } else if (searchString[0].toString().equals(">")) {
+            numMin = numbers[0].toInt()
+        } else {
+            numMin = minOf(numbers[0].toInt(), numMax)
+            numMax = minOf(numbers[0].toInt(), numMax)
+        }
+        2 -> {
+            numMin = minOf(numbers[0].toInt(), numbers[1].toInt())
+            numMax = maxOf(numbers[0].toInt(), numbers[1].toInt())
+        }
+    }
+    return num in numMin..numMax
+}

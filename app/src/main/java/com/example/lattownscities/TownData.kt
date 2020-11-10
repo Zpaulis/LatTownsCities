@@ -2,6 +2,7 @@ package com.example.lattownscities
 
 data class TownData (
     val area :Long = 0L,
+    val coa :String = "",
     val coat :String = "",
     val location :List<Double> = listOf(),
     val name :String = "",

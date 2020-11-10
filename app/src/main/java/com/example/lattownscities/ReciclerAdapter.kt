@@ -27,8 +27,19 @@ class TownAdapter(private val listener: AdapterClickListener): RecyclerView.Adap
                         resultList.add(row)
                     }
                         }
+                    "coa" -> {for (row in townData){
+                        if ((row.coa.toLowerCase(Locale.ROOT)).contains(charSearch.toLowerCase(Locale.ROOT)))
+                        resultList.add(row)
+                    }
+                        }
                     "own" -> {
                         resultList = townData.filter { yearSearcher(charSearch, it.own) }.toMutableList()
+                    }
+                    "area" -> {
+                        resultList = townData.filter { numSearcher(charSearch, it.area.toInt()) }.toMutableList()
+                        }
+                    "population" -> {
+                        resultList = townData.filter { numSearcher(charSearch, it.population) }.toMutableList()
                         }
                             }
                     townFilterList = resultList
