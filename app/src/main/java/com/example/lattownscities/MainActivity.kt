@@ -1,5 +1,6 @@
 package com.example.lattownscities
 
+import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 var townData = mutableListOf<TownData>()
 private lateinit var layoutManager : StaggeredGridLayoutManager
 lateinit var madapter : TownAdapter
-var sortOrder = true
+var sortOrder = false
 var sortParameter = "name"
 var queryTarget = "name"
 var helperText = ""
@@ -49,6 +50,8 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
         return true
     }
 
+    var spanCount = 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -62,11 +65,11 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
     }
 
     private fun setupRecyclerView() {
-        layoutManager = StaggeredGridLayoutManager(
-            resources.getInteger(R.integer.span_count), StaggeredGridLayoutManager.VERTICAL
-        )
+        var spanCount = this@MainActivity.getPreferences(Context.MODE_PRIVATE)
+            .getInt(SPAN_EXTRA, 3)
+//        layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
         mainItems.apply {
-            layoutManager = layoutManager
+            layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
             madapter = TownAdapter(this@MainActivity)
             adapter = madapter
 //            adapter.filter.filter(newText)
@@ -137,13 +140,26 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             R.id.query_coa -> {
                 queryTarget = "coa"
                 true }
-            else -> super.onOptionsItemSelected(item)
+            R.id.columns -> {
+//                val builder = AlertDialog.Builder(this)
+//                builder.setTitle("Columns")
+                spanCount = 2
+                this@MainActivity.getPreferences(Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt(SPAN_EXTRA, spanCount)
+                    .apply()
+                setupRecyclerView()
+                true
+                    }
+
+                    else -> super.onOptionsItemSelected(item)
         }
     }
 
     companion object{
         const val EXTRA = "ID"
         const val REQUEST_CODE_DETAILS = 1111
+        const val SPAN_EXTRA = "SPAN"
         var town : TownData? = null
     }
 }

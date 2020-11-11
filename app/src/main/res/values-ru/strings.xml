@@ -24,4 +24,5 @@
     <string name="language">Язык</string>
     <string name="up_down_order">порядок</string>
     <string name="columns">колонны</string>
+    <string name="search_by_coa">по гербу</string>
 </resources>
