@@ -13,7 +13,7 @@ fun loadTowns(myCallback: MainActivity.MyCallback) {
     Log.d(TAG, "FIRESTORE INITIALIZED")
 
     db.collection("towns")
-        .orderBy("name", Query.Direction.ASCENDING)
+        .orderBy("name", Query.Direction.DESCENDING)
         .get()
         .addOnSuccessListener { result ->
             townData = mutableListOf<TownData>()

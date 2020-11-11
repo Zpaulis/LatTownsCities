@@ -1,23 +1,20 @@
 package com.example.lattownscities
 
-import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 //const val MAINTAG = "MAIN ACTIVITY"
 var townData = mutableListOf<TownData>()
-private lateinit var layoutManager : StaggeredGridLayoutManager
+//private lateinit var layoutManager : StaggeredGridLayoutManager
 lateinit var madapter : TownAdapter
 var sortOrder = false
 var sortParameter = "name"
@@ -50,8 +47,6 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
         return true
     }
 
-    var spanCount = 2
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,7 +60,7 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
     }
 
     private fun setupRecyclerView() {
-        var spanCount = this@MainActivity.getPreferences(Context.MODE_PRIVATE)
+        val spanCount = this@MainActivity.getPreferences(Context.MODE_PRIVATE)
             .getInt(SPAN_EXTRA, 3)
 //        layoutManager = StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL)
         mainItems.apply {
@@ -143,7 +138,9 @@ class MainActivity : AppCompatActivity(), AdapterClickListener {
             R.id.columns -> {
 //                val builder = AlertDialog.Builder(this)
 //                builder.setTitle("Columns")
-                spanCount = 2
+                var spanCount = this@MainActivity.getPreferences(Context.MODE_PRIVATE)
+                    .getInt(SPAN_EXTRA, 3)
+                spanCount = if (spanCount==3) 1 else spanCount+1
                 this@MainActivity.getPreferences(Context.MODE_PRIVATE)
                     .edit()
                     .putInt(SPAN_EXTRA, spanCount)
